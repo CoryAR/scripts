@@ -1,4 +1,3 @@
-<script>
 $(function() {
    if (location.href.indexOf('showtopic') !== -1) {
        var likes_exists;
