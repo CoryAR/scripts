@@ -247,7 +247,7 @@ $(function() {
         });
     }
 
-    $('#ucpmenu a[href$="CODE=50"] + br').after(' · <a href="/index.php?act=UserCP&CODE=26&scheduled">View Scheduled Topics</a>');
+    $('#ucpmenu a[href$="CODE=50"] + br').after(' &middot; <a href="/index.php?act=UserCP&CODE=26&scheduled">View Scheduled Topics</a>');
 
     if (location.href.includes('&scheduled')) {
         $('#ucpcontent *:not(div.maintitle)').hide();
