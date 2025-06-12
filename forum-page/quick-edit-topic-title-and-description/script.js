@@ -7,7 +7,7 @@ if (location.href.indexOf('showforum') !== -1) {
         var uID = parseInt($(this).find('td.row2:eq(1) a').attr('href').split('showuser=')[1], 10);
         var mid = $('#logged-in-as').attr('href').split('showuser=')[1];
         if (uID === mid || $('#modcp-link').length) {
-            $(this).find('td.row4:eq(1)').wrapInner('<span class="c_cat-inner"></span>').append('<span class="qe_show" style="display: none"><input type="text" value="" name="qe_title" /><br /><input type="text" value="" name="qe_desc" style="margin: 5px 0" /><br /><button type="button">Submit</button></span>').find('span.desc').prev('br').prev('a').after('<span class="qe_topic" style="cursor: pointer; position: relative; left: 10px">Edit</span>');
+            $(this).find('td.row4:eq(1)').wrapInner('<span class="c_cat-inner"></span>').append('<span class="qe_show" style="display: none"><input type="text" value="" name="qe_title" /><br /><input type="text" value="" name="qe_desc" style="margin: 5px 0" /><br /><button type="button">Submit</button></span>').find('span.desc').prev('br').prev('a, span.small').after('<span class="qe_topic" style="cursor: pointer; position: relative; left: 10px">Edit</span>');
         }
     });
 
