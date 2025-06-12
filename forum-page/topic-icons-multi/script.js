@@ -1,3 +1,6 @@
+// By Cory
+// https://cory.jcink.net/
+
 if ($('input[name="TopicTitle"]').length) {
     $('#posting-form td.pformstrip:last').parent('tr').before('<tr id="icons"><td class="pformleft">Topic Icon</td><td class="pformleft"><form id="t_icons"><label><input type="radio" name="tic" value="0" checked="checked">No Icon</label><label><input type="radio" name="tic" value="1">Add Icon</label></form></td></tr>');
 
