@@ -1,3 +1,6 @@
+// By Cory
+// https://cory.jcink.net/
+
 $(function() {
    if (location.href.indexOf('showtopic') !== -1) {
        var likes_exists;
