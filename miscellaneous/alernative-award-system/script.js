@@ -14,10 +14,10 @@ $(function() {
     });
 
     if (location.href.indexOf('showuser=') !== -1) {
-        $('#skin_selector').before('<div class="tableborder" style="margin-top: 10px"><div class="maintitle">Awards</div><table id="awards" style="width: 100%"><tbody><tr><td class="titlemedium">Award</td><td class="titlemedium">Name</td><td class="titlemedium">Date Awarded</td><td class="titlemedium">Reason</td></tr></tbody></table>');
+        $('form[name="skin"]').before('<div class="tableborder" style="margin-top: 10px"><div class="maintitle">Awards</div><table id="awards" style="width: 100%"><tbody><tr><td class="titlemedium">Award</td><td class="titlemedium">Name</td><td class="titlemedium">Date Awarded</td><td class="titlemedium">Reason</td></tr></tbody></table>');
 
         for (var i = 0; i < a; i++) {
-            if ($('#profile-header h3').text() === awards[i][0]) {
+            if ($('#profile-header h3, #profilename').text() === awards[i][0]) {
                 $('#awards tbody').append('<tr><td class="row2"><a href="' + main_url + '?act=Pages&pid=' + pgID + '"><img src="' + awards[i][2] + '" alt="' + awards[i][1] + '" width="' + awardswidth + '" height="' + awardsheight + '" /></a></td><td class="row2">' + awards[i][1] + '</td><td class="row2">' + awards[i][3] + '</td><td class="row2">' + awards[i][4] + '</td></tr>');
             }
         }
