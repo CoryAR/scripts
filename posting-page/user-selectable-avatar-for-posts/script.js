@@ -3,7 +3,7 @@
 
 $('#post-icon-options').after('<tr id="post-avatar-selection"><td class="pformleft">Select an avatar for this post</td><td class="pformright"><select class="forminput" style="vertical-align: top"><option value="-1">Choose Avatar</option></select></td></tr>');
 
-function addAvatar(aName, aURL) {
+export function addAvatar(aName, aURL) {
    $('#post-avatar-selection select').append('<option value="' + aURL + '">' + aName + '</option>');
 }
 
