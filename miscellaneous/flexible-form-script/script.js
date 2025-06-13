@@ -1,7 +1,14 @@
 // By Cory
 // https://cory.jcink.net/
-
-$(function() {
+export default function init({
+    form_enable_pm,
+    form_enable_topic,
+    form_pm_user,
+    form_pm_title,
+    form_FID,
+    form_topic_title,
+    form_topic_desc
+}) {
     var main_url = location.href.split('index.php')[0];
     var post_value = '';
 
@@ -55,4 +62,4 @@ $(function() {
             });
         }
     });
-});
+}
