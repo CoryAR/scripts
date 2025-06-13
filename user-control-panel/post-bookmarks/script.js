@@ -6,7 +6,7 @@ if ($('#logged-in-as').length) {
         $('div.post-buttons-top').append('<img src="' + bMarkIMG + '" class="bMark-post" style="margin: 0 5px; opacity: 0.5; cursor: pointer" alt="Bookmark This Post" title="Bookmark This Post">');
     }
 
-    $('a[href*="UserCP&CODE=50"] + br').after('· <a href="/index.php?act=UserCP&CODE=01&bookmarks">View Post Bookmarks</a>');
+    $('a[href*="UserCP&CODE=50"] + br').after('&middot; <a href="/index.php?act=UserCP&CODE=01&bookmarks">View Post Bookmarks</a>');
     $('td.pformleft:contains(Bookmarks)').parent('tr').hide();
 }
 
