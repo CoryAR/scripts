@@ -1,7 +1,7 @@
 // By Cory
 // https://cory.jcink.net/
 
-function addExp(field, pID, href, src) {
+export function addExp(field, pID, href, src) {
    if (location.href.indexOf('act=UserCP&CODE=01') !== -1 || $('#registration-form').length) {
        $('tr[id*="field_"] td:contains(' + field + '), fieldset legend:contains(' + field + ')').next('td, table').find('input').hide();
        var input = $('tr[id*="field_"] td:contains(' + field + '), fieldset legend:contains(' + field + ')').next('td, table').find('input');
