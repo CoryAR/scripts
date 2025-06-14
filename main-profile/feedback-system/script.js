@@ -1,7 +1,9 @@
 // By Cory
 // https://cory.jcink.net/
 
-$(function() {
+export default function init({
+    FBForumID
+}) {
     var main_url = location.href.split('?')[0];
 
     if (location.href.indexOf('showuser=') !== -1) {
@@ -257,4 +259,4 @@ $(function() {
     });
 
     $('#active-topics a[href*="showforum=' + FBForumID + '"], #search-topics a[href*="showforum=' + FBForumID + '"]').parent('td.row4').parent('tr').hide();
-});
+}
