@@ -1,7 +1,14 @@
 // By Cory
 // https://cory.jcink.net/
 
-(function($) {
+export default function init({
+    topicID,
+    maxChar,
+    crWidth,
+    crHeight,
+    maxImageWidth,
+    maxImageHeight
+}) {
     var main_url = location.href.split('index.php')[0];
     if (location.href.endsWith('showtopic=' + topicID) || location.href.includes('showtopic=' + topicID + '&')) {
         var shoutsPerPage = 15;
@@ -203,7 +210,7 @@
     });
 
     $('#submenu td[align="right"]').append('<a href="' + main_url + 'index.php?showtopic=' + topicID + '&view=getnewpost">Chatroom</a>');
-})(jQuery);
+}
 
 function wrapText(elementID, openTag, closeTag) {
     var textArea = $('#' + elementID);
