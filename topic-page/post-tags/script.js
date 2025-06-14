@@ -1,3 +1,6 @@
+// By Cory
+// https://cory.jcink.net/
+
 $(function() {
    if (location.href.indexOf('Post&CODE=02') !== -1 || location.href.indexOf('Post&CODE=08') !== -1) {
        $('#enter-your-post-header').after('<tr id="post-tags"><td class="pformleft">Post Tags<br /><small>Separate with a comma (,)</small></td><td class="pformright"><input type="text" size="40" name="PostTags" class="forminput" /></td></tr>');
