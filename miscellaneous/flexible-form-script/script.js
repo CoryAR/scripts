@@ -1,5 +1,6 @@
 // By Cory
 // https://cory.jcink.net/
+
 export default function init({
     form_enable_pm,
     form_enable_topic,
