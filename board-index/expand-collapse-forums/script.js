@@ -1,7 +1,10 @@
 // By Cory
 // https://cory.jcink.net/
 
-$(function() {
+export default function init({
+    expandForum,
+    collapseForum
+}) {
     var before;
     var after;
 
@@ -49,4 +52,4 @@ $(function() {
     });
 
     ex_coll();
-});
+}
