@@ -1,3 +1,6 @@
+// By Cory
+// https://cory.jcink.net/
+
 export default function init({
     likes_dislikes_fid
 }) {
