@@ -1,7 +1,10 @@
 // By Cory
 // https://cory.jcink.net/
 
-$(function() {
+export default function init({
+    act,
+    c
+}) {
     let catID = [];
     let forumName = [];
     let forumLink = [];
@@ -110,4 +113,4 @@ $(function() {
     } else {
         $('#nav-bar').html(localStorage.getItem('nav-bar-sidebar'));
     }
-});
+}
