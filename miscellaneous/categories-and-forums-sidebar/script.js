@@ -5,42 +5,43 @@ export default function init({
     act,
     c
 }) {
-    let catID = [];
-    let forumName = [];
-    let forumLink = [];
-    let forumID = [];
-    let parentID = [];
-    let subforumName = [];
-    let subforumLink = [];
+    let catIDs = [];
+    let forumNames = [];
+    let forumLinks = [];
+    let forumIDs = [];
+    let parentIDs = [];
+    let subforumNames = [];
+    let subforumLinks = [];
     let bColor = $('#sidebar').css('border-top-color');
+    let navBar = $('#nav-bar');
 
-    function getNav() {
-        $('#nav-bar li').append('<ul class="row2"></ul>');
+    function renderNav() {
+        navBar.find('li').append('<ul class="row2"></ul>');
 
-        $('#nav-bar li').each(function() {
+        navBar.find('li').each(function() {
             let $this = $(this);
 
-            $(forumName).each(function(i) {
-                if (catID[i] === $this.attr('class')) {
-                    $this.find('ul').append('<li class="forum' + forumID[i] + '"><a href="' + forumLink[i] + '">' + forumName[i] + '</a></li>');
+            $(forumNames).each(function(i) {
+                if (catIDs[i] === $this.attr('class')) {
+                    $this.find('ul').append('<li class="forum' + forumIDs[i] + '"><a href="' + forumLinks[i] + '">' + forumNames[i] + '</a></li>');
                 }
             });
         });
 
-        $('#nav-bar ul ul li').append('<ul class="row2"></ul>');
+        navBar.find('ul ul li').append('<ul class="row2"></ul>');
 
-        $('#nav-bar ul ul li').each(function() {
+        navBar.find('ul ul li').each(function() {
             let $this = $(this);
 
-            $(subforumName).each(function(i) {
-                if ('forum' + parentID[i] === $this.attr('class')) {
-                    $this.find('ul').append('<li><a href="' + subforumLink[i] + '">' + subforumName[i] + '</a></li>');
+            $(subforumNames).each(function(i) {
+                if ('forum' + parentIDs[i] === $this.attr('class')) {
+                    $this.find('ul').append('<li><a href="' + subforumLinks[i] + '">' + subforumNames[i] + '</a></li>');
                 }
             });
         });
 
-        $('#nav-bar ul ul ul:empty').remove();
-        $('#nav-bar ul ul ul a').prepend('· ');
+        navBar.find('ul ul ul:empty').remove();
+        navBar.find('ul ul ul a').prepend('&middot; ');
 
         if ($('#sidebar').height() > $(window).height()) {
             $('#sidebar').css({
@@ -49,68 +50,43 @@ export default function init({
             });
         }
 
-        localStorage.setItem('nav-bar-sidebar-length', $('#nav-bar a').length);
-
-        if (localStorage.getItem('nav-bar-sidebar-length') !== $('#nav-bar a').length) {
-            localStorage.removeItem('nav-bar-sidebar');
-        }
-
-        localStorage.setItem('nav-bar-sidebar', $('#nav-bar').html());
+        sessionStorage.setItem('nav-bar-sidebar', navBar.html());
     }
 
-    if (act === 'idx' && !$.isNumeric(' + c + ')) {
-        $('div.category').each(function() {
+    function inventory(base) {
+        base.find('div.category').each(function() {
             let categoryID = $(this).attr('id');
             let catName = $(this).find('div.maintitle a:last').text();
             let catLink = $(this).find('div.maintitle a:last').attr('href');
 
-            $('#nav-bar ul').append('<li class="' + categoryID + '"><a class="titlemedium" style="border-top: 1px solid ' + bColor + '; border-bottom: 1px solid ' + bColor + '" href="' + catLink + '">' + catName + '</a></li>');
+            navBar.find('ul').append('<li class="' + categoryID + '"><a class="titlemedium" style="border-top: 1px solid ' + bColor + '; border-bottom: 1px solid ' + bColor + '" href="' + catLink + '">' + catName + '</a></li>');
         });
 
-        $('#sidebar a.titlemedium:eq(0)').css('border-top', '0');
+        base.find('#sidebar a.titlemedium:eq(0)').css('border-top', '0');
 
-        $('div.category b a.tooltip').each(function() {
-            catID.push($(this).parents('div.category').attr('id'));
-            forumName.push($(this).text());
-            forumLink.push($(this).attr('href'));
-            forumID.push($(this).attr('href').split('showforum=')[1]);
+        base.find('div.category b a.tooltip').each(function() {
+            catIDs.push($(this).parents('div.category').attr('id'));
+            forumNames.push($(this).text());
+            forumLinks.push($(this).attr('href'));
+            forumIDs.push($(this).attr('href').split('showforum=')[1]);
         });
 
-        $('span.subforums a.tooltip').each(function() {
-            parentID.push($(this).parents('tr.forum-row').find('b a.tooltip').attr('href').split('showforum=')[1]);
-            subforumName.push($(this).text());
-            subforumLink.push($(this).attr('href'));
+        base.find('span.subforums a.tooltip').each(function() {
+            parentIDs.push($(this).parents('tr.forum-row').find('b a.tooltip').attr('href').split('showforum=')[1]);
+            subforumNames.push($(this).text());
+            subforumLinks.push($(this).attr('href'));
         });
+    }
 
-        getNav();
-    } else if (localStorage.getItem('nav-bar-sidebar') === null || localStorage.getItem('nav-bar-sidebar').length === '') {
+    if (act === 'idx' && !$.isNumeric(' + c + ')) {
+        inventory($(document.body));
+        renderNav();
+    } else if (sessionStorage.getItem('nav-bar-sidebar') === null || sessionStorage.getItem('nav-bar-sidebar').length === '') {
         $.get('/index.php', function(data) {
-            $('div.category', data).each(function() {
-                let categoryID = $(this).attr('id');
-                let catName = $(this).find('div.maintitle a:last').text();
-                let catLink = $(this).find('div.maintitle a:last').attr('href');
-
-                $('#nav-bar ul').append('<li class="' + categoryID + '"><a class="titlemedium" style="border-top: 1px solid ' + bColor + '; border-bottom: 1px solid ' + bColor + '" href="' + catLink + '">' + catName + '</a></li>');
-            });
-
-            $('#sidebar a.titlemedium:eq(0)').css('border-top', '0');
-
-            $('div.category b a.tooltip', data).each(function() {
-                catID.push($(this).parents('div.category').attr('id'));
-                forumName.push($(this).text());
-                forumLink.push($(this).attr('href'));
-                forumID.push($(this).attr('href').split('showforum=')[1]);
-            });
-
-            $('span.subforums a.tooltip', data).each(function() {
-                parentID.push($(this).parents('tr.forum-row').find('b a.tooltip').attr('href').split('showforum=')[1]);
-                subforumName.push($(this).text());
-                subforumLink.push($(this).attr('href'));
-            });
-
-            getNav();
+            inventory($(document.createElement('div')).html(data));
+            renderNav();
         });
     } else {
-        $('#nav-bar').html(localStorage.getItem('nav-bar-sidebar'));
+        navBar.html(sessionStorage.getItem('nav-bar-sidebar'));
     }
 }
