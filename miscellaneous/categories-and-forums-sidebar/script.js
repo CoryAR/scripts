@@ -78,7 +78,7 @@ export default function init({
         });
     }
 
-    if (act === 'idx' && !$.isNumeric(' + c + ')) {
+    if (act === 'idx' && !$.isNumeric(c)) {
         inventory($(document.body));
         renderNav();
     } else if (sessionStorage.getItem('nav-bar-sidebar') === null || sessionStorage.getItem('nav-bar-sidebar').length === '') {
