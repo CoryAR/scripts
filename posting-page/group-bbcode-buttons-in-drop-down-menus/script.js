@@ -1,6 +1,8 @@
 // By Cory and Nicket of jCodes: https://jcodesresources.com/
 
-export default function({BBCodeGroups}){
+export default function({
+    BBCodeGroups
+}) {
     const clean = str => str.replace(/\*/g, '').trim().toLowerCase();
 
     const buttonsContainer = document.getElementById('bbcode-buttons');
@@ -35,4 +37,4 @@ export default function({BBCodeGroups}){
             }
         });
     }
-});
+}
