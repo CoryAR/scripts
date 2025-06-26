@@ -12,14 +12,17 @@ $('#multi-buy').click(function() {
         let areYouSure = confirm('Are you sure you want to buy all of the selected items?');
 
         if (areYouSure) {
+            let fetches = [];
             $('input[name="multibuy"]').each(function() {
                 if ($(this).is(':checked')) {
-                    $.get($(this).parent().prev().prev().find('a').attr('href'), function() {});
+                    fetches.push(fetch($(this).parent().prev().prev().find('a').attr('href')));
                 }
             });
-            $(document).ajaxStop(function() {
+            Promise.all(fetches).then(function(responses) {
                 $('input[name="multibuy"]').prop('checked', false);
                 alert('All items have been purchased');
+            }).catch(function(error) {
+                alert('An error occurred while purchasing items, not all items were purchased.');
             });
         }
     } else {
@@ -32,14 +35,17 @@ $('#multi-use').click(function() {
         let areYouSure = confirm('Are you sure you want to use all of the selected items?');
 
         if (areYouSure) {
+            let fetches = [];
             $('input[name="multiuse"]').each(function() {
                 if ($(this).is(':checked')) {
-                    $.get($(this).parent().prev().find('a:first').attr('href'), function() {});
+                    fetches.push(fetch($(this).parent().prev().find('a:first').attr('href')));
                 }
             });
-            $(document).ajaxStop(function() {
+            Promise.all(fetches).then(function(responses) {
                 $('input[name="multiuse"]').prop('checked', false);
                 alert('All items have been used');
+            }).catch(function(error) {
+                alert('An error occurred while using items, not all items were used.');
             });
         }
     } else {
