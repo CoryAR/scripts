@@ -1,6 +1,6 @@
 // By Cory and Nicket of jCodes: https://jcodesresources.com/
 
-document.addEventListener('DOMContentLoaded', function() {
+export default function({BBCodeGroups}){
     const clean = str => str.replace(/\*/g, '').trim().toLowerCase();
 
     const buttonsContainer = document.getElementById('bbcode-buttons');
