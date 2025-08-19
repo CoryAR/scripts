@@ -11,7 +11,7 @@ export default function init({
         var likes_tID;
         var dislikes_tID;
 
-        $('td[width="20%"][nowrap]:eq(0)').parents('table').before('<div class="tableborder" style="float: right; margin: 10px 0 20px"><div class="row2" style="text-align: center; min-width: 250px"><a href="javascript: void(0);" id="like_topic">Like This Topic</a> - <a href="javascript: void(0);" id="dislike_topic">Dislike This Topic</a><br /><br /><span id="likes" style="font-weight: 700"><em>0</em></span> Likes - <span id="dislikes" style="font-weight: 700"><em>0</em></span> Dislikes</div></div>');
+        $('td[width="80%"]:has(a[href*="Post"]):eq(0)').parents('table').before('<div class="tableborder" style="float: right; margin: 10px 0 20px"><div class="row2" style="text-align: center; min-width: 250px"><a href="javascript: void(0);" id="like_topic">Like This Topic</a> - <a href="javascript: void(0);" id="dislike_topic">Dislike This Topic</a><br /><br /><span id="likes" style="font-weight: 700"><em>0</em></span> Likes - <span id="dislikes" style="font-weight: 700"><em>0</em></span> Dislikes</div></div>');
 
         $.get('/index.php?act=Search&q="' + tID + '-Likes"&f=' + likes_dislikes_fid + '&u=&rt=topics', function(sData) {
             $.get($('a', sData).attr('href'), function(nSData) {
