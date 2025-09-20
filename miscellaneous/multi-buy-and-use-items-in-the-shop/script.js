@@ -18,7 +18,7 @@ $('#multi-buy').click(function() {
             let fetches = [];
             $('input[name="multibuy"]').each(function() {
                 if ($(this).is(':checked')) {
-                    fetches.push(fetch($(this).parent().prev().prev().find('a').attr('href')));
+                    fetches.push(fetch($(this).parent().parent().find('a[href*="act=store&code=buyitem"]').attr('href')));
                 }
             });
             Promise.all(fetches).then(function(responses) {
