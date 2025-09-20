@@ -2,10 +2,13 @@
 // https://cory.jcink.net/
 
 $('td.store-shop tr:eq(0)').append('<td class="pformstrip" align="center" width="10%"><a href="javascript: void(0)" id="multi-buy">Multi-Buy</a></td>');
-$('td.store-inventory tr:has(td.pformstrip)').append('<td class="pformstrip" align="center" width="10%"><a href="javascript: void(0)" id="multi-use">Multi-Use</a></td>');
 $('td.store-shop tr:not(:first, :last, :has(td.pformleft))').append('<td class="row4" align="center"><input type="checkbox" name="multibuy" class="checkbox"></td>');
-$('td.store-inventory tr:gt(2)').append('<td class="row4" align="center"><input type="checkbox" name="multiuse" class="checkbox"></td>');
-$('td.store-inventory td.pformleft:last-child').attr('colspan', '4');
+
+if ($('td.pformleft:contains(Inventory Empty)').length === 0) {
+    $('td.store-inventory tr:has(td.pformstrip)').append('<td class="pformstrip" align="center" width="10%"><a href="javascript: void(0)" id="multi-use">Multi-Use</a></td>');
+    $('td.store-inventory tr:gt(2)').append('<td class="row4" align="center"><input type="checkbox" name="multiuse" class="checkbox"></td>');
+    $('td.store-inventory td.pformleft:last-child').attr('colspan', '4');
+}
 
 $('#multi-buy').click(function() {
     if ($('input[name="multibuy"]:checked').length) {
