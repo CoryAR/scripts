@@ -1,3 +1,6 @@
+// By Cory
+// https://cory.jcink.net/
+
 $('#qr_open div.tablepad').prepend('<div id="emots" class="tableborder" style="max-width: 150px; max-height: 250px; overflow: auto; margin-right: 10px"><div class="row2" style="display: flex; justify-content: space-evenly; flex-wrap: wrap; gap: 7.5px"></div></div>');
 
 function wrapText(element, openTag, closeTag) {
