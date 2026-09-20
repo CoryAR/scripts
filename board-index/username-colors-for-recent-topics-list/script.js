@@ -1,3 +1,6 @@
+// By Cory
+// https://cory.jcink.net/
+
 if ($('#recent-topics').length) {
     $.get('/index.php?act=Members&max_results=1000', function(data) {
         $('#recent-topics a[href*="showuser"]').each(function() {
